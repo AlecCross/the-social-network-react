@@ -1,23 +1,35 @@
 import logo from './logo.svg';
-import './App.css';
+import './App.css'; //Импорт css 
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-wrapper">
+      <heder className='header'>
+        <img src="data:image/png;base64,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"></img>
+      </heder>
+      <nav className='nav'>
+      <div><a>Profile</a></div>
+      <div><a>Messages</a></div>
+      <div><a>News</a></div>
+      <div><a>Music</a></div>
+      <div><a>Settings</a></div>
+        
+      </nav>
+      <div className='content'>
+        <img src='https://html5css.ru/css/img_lights.jpg'></img>
+        <div>Main content</div>
+        <div>
+          ava+description
+        </div>
+        <div>
+          my post
+        </div>
+        <div>
+          Nev posts
+          <div>Pos1</div>
+          <div>Pos2</div>
+        </div>
+      </div>
     </div>
   );
 }
