@@ -27,3 +27,8 @@
   grid-area: n;
   background-color: burlywood;
 } */
+
+.app-wrapper-content{
+  grid-area: c;
+  background-color: cornflowerblue;
+}

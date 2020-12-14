@@ -4,7 +4,7 @@ import s from './Profile.module.css';
 
 let Profile = () => {
     return (
-        <div className={s.content}>
+        <div>
             <img src='https://html5css.ru/css/img_lights.jpg'></img>
             <div>Main content</div>
             <div>
