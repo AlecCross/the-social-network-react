@@ -1,0 +1,17 @@
+.dialogs_wrap{
+    display: grid;
+    grid-template-columns: 2fr 12fr;
+    color: white;
+}
+
+.dialogs{
+    padding: 12px;
+}
+
+.dialogs .active{
+    color: blue;
+}
+
+.messages{
+    padding: 12px;
+}
