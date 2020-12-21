@@ -1,0 +1,9 @@
+.avatar{
+    width: 100px;
+    border-radius: 50px;
+}
+
+.post{
+    background-color: white;
+    border-radius: 15px;
+}
