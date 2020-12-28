@@ -1,6 +1,6 @@
 import React from 'react';
 import ProfileData from './profileData/ProfileData'
-import s from './Profile.module.css';
+//import s from './Profile.module.css';
 import Posts from './posts/Posts';
 
 let Profile = () => {
@@ -9,7 +9,6 @@ let Profile = () => {
             <ProfileData />
             <Posts />
         </div>
-
     );
 }
 

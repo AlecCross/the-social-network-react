@@ -1,4 +1,4 @@
-import s from './Posts.module.css';
+//import s from './Posts.module.css';
 import React from 'react';
 import Post from '../post/Post';
 
