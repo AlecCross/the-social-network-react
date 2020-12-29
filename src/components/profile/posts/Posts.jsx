@@ -8,9 +8,7 @@ const Posts = (props) => {
     let postsElements = props.posts.map(p => <Post text={p.text} avatar={p.avatar} id={p.id} />);
 
     let addPost = () => {
-        let text = newPostElement.current.value;
-        props.addPost(text);
-        props.updateNewPostText('');
+        props.addPost();
     }
     let onPostChange = () =>{
         let text = newPostElement.current.value;

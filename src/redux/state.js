@@ -43,13 +43,14 @@ let state = {
     },
 }
 
-export let addPost = (post) =>{
+export let addPost = () =>{
     let newPost = {
         id: 5,
-        text: post,
+        text: state.profilePage.newPostText,
         avatar: stockAvatar,
     };
     state.profilePage.posts.push(newPost);
+    state.profilePage.newPostText = '';
     reRender(state);
 }
 export let updateNewPostText = (newText) =>{
