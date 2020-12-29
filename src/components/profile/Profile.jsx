@@ -3,11 +3,11 @@ import ProfileData from './profileData/ProfileData'
 //import s from './Profile.module.css';
 import Posts from './posts/Posts';
 
-let Profile = () => {
+let Profile = (props) => {
     return (
         <div>
             <ProfileData />
-            <Posts />
+            <Posts posts={props.posts} />
         </div>
     );
 }
