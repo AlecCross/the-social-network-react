@@ -1,0 +1,18 @@
+.friendImg {
+  max-width: 20px;
+  border-radius: 5px;
+  margin: 3px;
+  border-style: double;
+}
+.frName {
+  color: white;
+}
+
+/* @media (max-width: 80px) {
+  .friendImg {
+    max-width: 30px;
+  }
+  .frName {
+
+  }
+} */
