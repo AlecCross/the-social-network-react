@@ -1,3 +1,5 @@
+import {reRender} from "./../render";
+
 let stockAvatar = 'https://lumpics.ru/wp-content/uploads/2017/11/Programmyi-dlya-sozdaniya-avatarok.png';
 let state = {
     messagesPage: {
@@ -35,6 +37,16 @@ let state = {
             { id: 7, name: 'friend7', avatar: stockAvatar },
         ],
     },
+}
+
+export let addPost = (post) =>{
+    let newPost = {
+        id: 5,
+        text: post,
+        avatar: stockAvatar,
+    };
+    state.profilePage.posts.push(newPost);
+    reRender(state);
 }
 
 export default state

@@ -3,7 +3,7 @@ import Header from './components/header/Header';
 import Navbar from './components/navbar/Navbar';
 import Profile from './components/profile/Profile';
 import Dialogs from './components/dialogs/Dialogs';
-import { HashRouter, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import Music from './components/music/Music';
 import News from './components/news/News';
 import Settings from './components/settings/Settings';
@@ -11,13 +11,15 @@ import Friends from './components/friends/Friends';
 
 function App(props) {
   return (
-    <HashRouter>
+ 
       <div className="app-wrapper">
         <Header />
         <Navbar friends={props.state.friendsPage.friends}/>
         <div className='app-wrapper-content'>
           <Route path='/profile' render={() => <Profile
-            posts={props.state.profilePage.posts} />
+            posts={props.state.profilePage.posts}
+            addPost={props.addPost}
+            />
           }
           />
           <Route path='/dialogs' render={() => <Dialogs
@@ -34,7 +36,7 @@ function App(props) {
           />
         </div>
       </div>
-    </HashRouter>
+
   );
 }
 

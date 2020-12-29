@@ -1,6 +1,6 @@
 import React from 'react';
 import Friend from '../friend/Friend';
-import s from './FriendPreview.module.css';
+//import s from './FriendPreview.module.css';
 
 const FriendsPreview = (props) => {
     let frPrCount = 3;
