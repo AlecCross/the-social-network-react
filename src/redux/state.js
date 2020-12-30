@@ -1,6 +1,6 @@
-import {reRender} from "./../render";
-
-
+let reRender = () => {
+    console.log("state was changed");
+}
 
 let stockAvatar = 'https://lumpics.ru/wp-content/uploads/2017/11/Programmyi-dlya-sozdaniya-avatarok.png';
 let state = {
@@ -56,6 +56,10 @@ export let addPost = () =>{
 export let updateNewPostText = (newText) =>{
     state.profilePage.newPostText=newText;
     reRender(state);
+}
+
+export const subscribe = (observer) => {
+    reRender = observer;
 }
 
 export default state
