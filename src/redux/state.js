@@ -1,15 +1,6 @@
 let stockAvatar = 'https://lumpics.ru/wp-content/uploads/2017/11/Programmyi-dlya-sozdaniya-avatarok.png';
 let store = {
 
-    // setStockAvatar: () =>{
-        
-    // },
-
-    // getStockAvatar: () =>{
-    //     let stockAvatar = 'https://lumpics.ru/wp-content/uploads/2017/11/Programmyi-dlya-sozdaniya-avatarok.png';
-    //     return stockAvatar;
-    // },
-
     _state: {
         profilePage: {
             posts: [
@@ -84,6 +75,18 @@ let store = {
         // else if(action.type === 'SUBSCRIBE'){
             
         // }
+    }
+}
+
+export const addPostActionCreator = () => {
+    return {
+        type: 'ADD-POST',
+    }
+}
+export const updateNewPostTextActionCreator = (text) => {
+    return {
+        type: 'UPDATE-NEW-POST-TEXT',
+        newText: text,
     }
 }
 
