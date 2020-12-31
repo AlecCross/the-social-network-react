@@ -49,28 +49,41 @@ let store = {
             ],
         },
     },
-    getState() {
+    getState(){
         return this._state;
     },
+
     callSubscriber() {
 
     },
-    addPost() {
-        let newPost = {
-            id: 5,
-            text: this._state.profilePage.newPostText,
-            avatar: stockAvatar,
-        }
-        this._state.profilePage.posts.push(newPost);
-        this._state.profilePage.newPostText = '';
-        this.callSubscriber(this._state);
-    },
-    updateNewPostText(newText) {
-        this._state.profilePage.newPostText = newText;
-        this.callSubscriber(this._state);
-    },
-    subscribe(observer) {
+    subscribe(observer){
         this.callSubscriber = observer;
+    },
+        
+    dispatch(action){ // {type: 'SOME-TYPE'}
+        if(action.type === 'ADD-POST'){
+            let newPost = {
+                id: 5,
+                text: this._state.profilePage.newPostText,
+                avatar: stockAvatar,
+            }
+            this._state.profilePage.posts.push(newPost);
+            this._state.profilePage.newPostText = '';
+            this.callSubscriber(this._state);
+        }
+        // else if(action.type === 'GET-STATE'){
+            
+        // }
+        else if(action.type === 'UPDATE-NEW-POST-TEXT'){
+            this._state.profilePage.newPostText = action.newText;
+            this.callSubscriber(this._state);
+        }
+        // else if(action.type === 'CALL-SUBSCRIBER'){
+
+        // }
+        // else if(action.type === 'SUBSCRIBE'){
+            
+        // }
     }
 }
 
