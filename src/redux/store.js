@@ -1,9 +1,8 @@
+import messagesReducer from "./reducers/messages-reducer";
+import profileReducer from "./reducers/profile-reducer";
+
 let stockAvatar =
     'https://lumpics.ru/wp-content/uploads/2017/11/Programmyi-dlya-sozdaniya-avatarok.png';
-const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
-const ADD_POST = 'ADD-POST';
-const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
-const SEND_MESSAGE = 'SEND-MESSAGE';
 
 let store = {
 
@@ -59,46 +58,10 @@ let store = {
         this.callSubscriber = observer;
     },
 
-    dispatch(action) { // {type: 'SOME-TYPE'}
-        if (action.type === UPDATE_NEW_POST_TEXT) {
-            this._state.profilePage.newPostText = action.newText;
-            this.callSubscriber(this._state);
-        }
-        else if (action.type === ADD_POST) {
-            let newPost = {
-                id: 5,
-                text: this._state.profilePage.newPostText,
-                avatar: stockAvatar,
-            }
-            this._state.profilePage.posts.push(newPost);
-            this._state.profilePage.newPostText = '';
-            this.callSubscriber(this._state);
-        }
-        else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
-            this._state.messagesPage.newMessageBody = action.body;
-            this.callSubscriber(this._state);
-        }
-        else if (action.type === SEND_MESSAGE) {
-            let body = this._state.messagesPage.newMessageBody;
-            this._state.messagesPage.newMessageBody = '';
-            this._state.messagesPage.messages.push({ id: 6, message: body });
-            this.callSubscriber(this._state);
-        }
+    dispatch(action) {
+    this._state.profilePage = profileReducer(this._state.profilePage, action, stockAvatar)
+    this._state.messagesPage = messagesReducer(this._state.messagesPage, action)
+    this.callSubscriber(this._state);
     }
 }
-
-export const updateNewPostTextActionCreator = (text) => {
-    return {
-        type: UPDATE_NEW_POST_TEXT, newText: text,
-    }
-}
-export const addPostActionCreator = () => ({ type: ADD_POST })
-
-export const updateNewMessageBogyCreator = (body) => {
-    return {
-        type: UPDATE_NEW_MESSAGE_BODY, body: body,
-    }
-}
-export const sendMessageCreator = () => ({ type: SEND_MESSAGE })
-
 export default store;
