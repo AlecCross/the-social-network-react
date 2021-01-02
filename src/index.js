@@ -1,9 +1,8 @@
-import reportWebVitals from './reportWebVitals';
-import store from './redux/store';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { HashRouter } from 'react-router-dom';
 import App from './App';
+import store from './redux/redux-store';
 
 let reRender = (state) => {
   ReactDOM.render(
@@ -15,6 +14,9 @@ let reRender = (state) => {
 
 reRender(store.getState());
 
-store.subscribe(reRender);
+store.subscribe(()=>{
+  let state = store.getState();
+  reRender(state);
+});
 
 
