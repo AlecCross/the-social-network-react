@@ -6,7 +6,7 @@ const FriendsPreview = (props) => {
     let frPrCount = 3;
     let firstThreeFriends = props.friends.map(f => {
         if (f.id <= frPrCount) {
-            return <Friend name={f.name} avatar={f.avatar} />
+            return <Friend name={f.name} avatar={f.avatar} minified />
         }
     }
     )

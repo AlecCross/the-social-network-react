@@ -1,4 +1,10 @@
-let stockAvatar = 'https://lumpics.ru/wp-content/uploads/2017/11/Programmyi-dlya-sozdaniya-avatarok.png';
+let stockAvatar =
+    'https://lumpics.ru/wp-content/uploads/2017/11/Programmyi-dlya-sozdaniya-avatarok.png';
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
+const ADD_POST = 'ADD-POST';
+const UPDATE_NEW_MESSAGE_BODY = 'UPDATE-NEW-MESSAGE-BODY';
+const SEND_MESSAGE = 'SEND-MESSAGE';
+
 let store = {
 
     _state: {
@@ -9,9 +15,9 @@ let store = {
                 { id: 3, text: 'Пост3', avatar: stockAvatar },
                 { id: 4, text: 'Пост4', avatar: stockAvatar },
             ],
-            newPostText: 'it-kamasutra.com',
+            newPostText: '',
         },
-    
+
         messagesPage: {
             dialogs: [
                 { id: 1, name: 'Andrew' },
@@ -25,9 +31,11 @@ let store = {
                 { id: 1, message: 'Привет!' },
                 { id: 2, message: 'Доров' },
                 { id: 3, message: 'Как там с поиском работы?' },
+                { id: 3, message: 'Как там с поиском работы2?' },
             ],
+            newMessageBody: ''
         },
-    
+
         friendsPage: {
             friends: [
                 { id: 1, name: 'friend1', avatar: stockAvatar },
@@ -40,19 +48,23 @@ let store = {
             ],
         },
     },
-    getState(){
+    getState() {
         return this._state;
     },
 
     callSubscriber() {
 
     },
-    subscribe(observer){
+    subscribe(observer) {
         this.callSubscriber = observer;
     },
-        
-    dispatch(action){ // {type: 'SOME-TYPE'}
-        if(action.type === 'ADD-POST'){
+
+    dispatch(action) { // {type: 'SOME-TYPE'}
+        if (action.type === UPDATE_NEW_POST_TEXT) {
+            this._state.profilePage.newPostText = action.newText;
+            this.callSubscriber(this._state);
+        }
+        else if (action.type === ADD_POST) {
             let newPost = {
                 id: 5,
                 text: this._state.profilePage.newPostText,
@@ -62,32 +74,31 @@ let store = {
             this._state.profilePage.newPostText = '';
             this.callSubscriber(this._state);
         }
-        // else if(action.type === 'GET-STATE'){
-            
-        // }
-        else if(action.type === 'UPDATE-NEW-POST-TEXT'){
-            this._state.profilePage.newPostText = action.newText;
+        else if (action.type === UPDATE_NEW_MESSAGE_BODY) {
+            this._state.messagesPage.newMessageBody = action.body;
             this.callSubscriber(this._state);
         }
-        // else if(action.type === 'CALL-SUBSCRIBER'){
-
-        // }
-        // else if(action.type === 'SUBSCRIBE'){
-            
-        // }
+        else if (action.type === SEND_MESSAGE) {
+            let body = this._state.messagesPage.newMessageBody;
+            this._state.messagesPage.newMessageBody = '';
+            this._state.messagesPage.messages.push({ id: 6, message: body });
+            this.callSubscriber(this._state);
+        }
     }
 }
 
-export const addPostActionCreator = () => {
-    return {
-        type: 'ADD-POST',
-    }
-}
 export const updateNewPostTextActionCreator = (text) => {
     return {
-        type: 'UPDATE-NEW-POST-TEXT',
-        newText: text,
+        type: UPDATE_NEW_POST_TEXT, newText: text,
     }
 }
+export const addPostActionCreator = () => ({ type: ADD_POST })
+
+export const updateNewMessageBogyCreator = (body) => {
+    return {
+        type: UPDATE_NEW_MESSAGE_BODY, body: body,
+    }
+}
+export const sendMessageCreator = () => ({ type: SEND_MESSAGE })
 
 export default store;

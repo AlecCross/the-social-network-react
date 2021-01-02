@@ -8,19 +8,29 @@ const Posts = (props) => {
 
     let newPostElement = React.createRef();
 
-    let addPost = () => {
-        // props.addPost();
-        props.dispatch(addPostActionCreator());
+    let addPost = (event) => {
+        if(event.target.value !== 0){
+            props.dispatch(addPostActionCreator());
+        }
     }
     let onPostChange = () =>{
         let text = newPostElement.current.value;
         let action = updateNewPostTextActionCreator(text);
         props.dispatch(action);
     }
+    let addPostKeyDown = (event) =>{
+        if(event.target.value !== 0){
+            if(event.ctrlKey && event.keyCode === 13)
+        {
+            props.dispatch(addPostActionCreator());
+        }
+        }
+    }
     return (
         <div>
             <div>
                 <textarea onChange={onPostChange} ref={newPostElement} 
+                onKeyDown={addPostKeyDown}
                 value={props.newPostText}/>
             </div>
             <div>
