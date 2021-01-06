@@ -2,7 +2,7 @@ import './App.css'; //Импорт css
 import Header from './components/header/Header';
 import Navbar from './components/navbar/Navbar';
 import Profile from './components/profile/Profile';
-import Dialogs from './components/dialogs/Dialogs';
+import DialogsContainer from './components/dialogs/DialogsContainer';
 import { Route } from 'react-router-dom';
 import Music from './components/music/Music';
 import News from './components/news/News';
@@ -16,13 +16,13 @@ function App(props) {
       <Navbar friends={props.state.friendsPage.friends} />
       <div className='app-wrapper-content'>
         <Route path='/profile' render={() => <Profile
-          profilePage={props.state.profilePage}
-          dispatch={props.dispatch}/>
+          store={props.store} />
         }
         />
-        <Route path='/dialogs' render={() => <Dialogs
-          messagesPage={props.state.messagesPage}
-          dispatch={props.dispatch} />
+        <Route path='/dialogs' render={() => <DialogsContainer
+          // messagesPage={props.state.messagesPage}
+          // dispatch={props.dispatch} />
+          store={props.store} />
         }
         />
         <Route path='/music' component={Music} />

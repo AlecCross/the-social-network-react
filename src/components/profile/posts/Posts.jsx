@@ -1,41 +1,39 @@
 //import s from './Posts.module.css';
 import React from 'react';
-import { addPostActionCreator, updateNewPostTextActionCreator } from '../../../redux/reducers/profile-reducer';
-
 import Post from '../post/Post';
 
 const Posts = (props) => {
-    let postsElements = props.posts.map(p => <Post text={p.text} avatar={p.avatar} id={p.id} />);
-
+    let postsElements = props.posts.map(p => <Post text={p.text}
+        avatar={p.avatar} id={p.id} />);
+        
     let newPostElement = React.createRef();
 
-    let addPost = (event) => {
-        if(event.target.value !== 0){
-            props.dispatch(addPostActionCreator());
+    let onAddPost = (event) => {
+        if (event.target.value !== 0) {
+            props.addPost();
         }
     }
-    let onPostChange = () =>{
+    let onPostChange = () => {
         let text = newPostElement.current.value;
-        let action = updateNewPostTextActionCreator(text);
-        props.dispatch(action);
+        props.updateNewPostText(text);
     }
-    let addPostKeyDown = (event) =>{
-        if(event.target.value !== 0){
-            if(event.ctrlKey && event.keyCode === 13)
-        {
-            props.dispatch(addPostActionCreator());
-        }
+    let addPostKeyDown = (event) => {
+        if (event.target.value !== 0) {
+            if (event.ctrlKey && event.keyCode === 13) {
+                props.addPost();
+            }
         }
     }
+
     return (
         <div>
             <div>
-                <textarea onChange={onPostChange} ref={newPostElement} 
-                onKeyDown={addPostKeyDown}
-                value={props.newPostText}/>
+                <textarea onChange={onPostChange} ref={newPostElement}
+                    onKeyDown={addPostKeyDown}
+                    value={props.newPostText} />
             </div>
             <div>
-                <button onClick={addPost}>Добавить</button>
+                <button onClick={onAddPost}>Добавить</button>
             </div>
             {postsElements}
         </div>

@@ -7,7 +7,7 @@ import store from './redux/redux-store';
 let reRender = (state) => {
   ReactDOM.render(
     <HashRouter>
-      <App state={state} dispatch={store.dispatch.bind(store)}/>
+      <App store={store} state={state} dispatch={store.dispatch.bind(store)}/>
     </HashRouter>, document.getElementById('root')
   );
 }

@@ -1,29 +1,28 @@
 import React from 'react';
-import { sendMessageCreator, updateNewMessageBogyCreator } from '../../redux/reducers/messages-reducer';
 import Dialog from './dialogItem/Dialog';
+// import { sendMessageCreator, updateNewMessageBogyCreator } from '../../redux/reducers/messages-reducer';
 import s from './Dialogs.module.css';
 import Message from './message/Message';
 
 const Dialogs = (props) => {
-
-    let dialogsElements = props.messagesPage.dialogs.map(d => <Dialog name={d.name} id={d.id} />);
-    let messagesElements = props.messagesPage.messages.map(m => <Message message={m.message} id={m.id} />);
-    let newMessageBody = props.messagesPage.newMessageBody;
+debugger
+    let dialogs = props.dialogs.map(d => <Dialog name={d.name} id={d.id} />);
+    let messages = props.messages.map(m => <Message message={m.message} id={m.id} />);
+    let newMessageBody = props.newMessageBody;
     
-    let onSendMessageClick = () => {
+    let SendMessageClick = () => {
         if (newMessageBody.length !== 0) {
-            props.dispatch(sendMessageCreator());
+            props.sendMessageCreator();
         }
     }
     
-    let onNewMessageChange = (event) => {
-        let body = event.target.value;
-        props.dispatch(updateNewMessageBogyCreator(body));
+    let NewMessageChange = () => {
+       props.onNewMessageChange();
     }
     let onSendMessageKeyDown = (event) => {
         if (event.target.value.length !== 0) {
             if (event.ctrlKey && event.keyCode === 13) {
-                props.dispatch(sendMessageCreator());
+                props.sendMessageCreator();
             }
         }
     }
@@ -31,20 +30,20 @@ const Dialogs = (props) => {
     return (
         <div className={s.dialogs_wrap}>
             <div className={s.dialogs}>
-                {dialogsElements}
+                {dialogs}
             </div>
             <div className={s.messages}>
-                <div>{messagesElements}</div>
+                <div>{messages}</div>
                 <div>
                     <div>
                         <textarea
                             value={newMessageBody}
-                            onChange={onNewMessageChange}
+                            onChange={NewMessageChange}
                             onKeyDown={onSendMessageKeyDown}
                             placeholder='Enter you message'></textarea>
                     </div>
                     <div>
-                        <button onClick={onSendMessageClick}>Send</button>
+                        <button onClick={SendMessageClick}>Send</button>
                     </div>
                 </div>
             </div>
