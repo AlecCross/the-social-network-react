@@ -6,23 +6,23 @@ import Message from './message/Message';
 
 const Dialogs = (props) => {
 debugger
-    let dialogs = props.dialogs.map(d => <Dialog name={d.name} id={d.id} />);
-    let messages = props.messages.map(m => <Message message={m.message} id={m.id} />);
-    let newMessageBody = props.newMessageBody;
+    let dialogs = props.messagesPage.dialogs.map(d => <Dialog name={d.name} id={d.id} />);
+    let messages = props.messagesPage.messages.map(m => <Message message={m.message} id={m.id} />);
+    let newMessageBody = props.messagesPage.newMessageBody;
     
     let SendMessageClick = () => {
         if (newMessageBody.length !== 0) {
-            props.sendMessageCreator();
+            props.sendMessage();
         }
     }
     
     let NewMessageChange = () => {
-       props.onNewMessageChange();
+       props.updateNewMessageBody();
     }
     let onSendMessageKeyDown = (event) => {
         if (event.target.value.length !== 0) {
             if (event.ctrlKey && event.keyCode === 13) {
-                props.sendMessageCreator();
+                props.sendMessage();
             }
         }
     }

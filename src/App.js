@@ -14,17 +14,13 @@ function App(props) {
     <div className="app-wrapper">
       <Header />
       <Navbar friends={props.state.friendsPage.friends} />
+      {/* <Navbar friends={props.state.friendsPage.friends} /> */}
       <div className='app-wrapper-content'>
-        <Route path='/profile' render={() => <Profile
-          store={props.store} />
-        }
-        />
-        <Route path='/dialogs' render={() => <DialogsContainer
-          // messagesPage={props.state.messagesPage}
-          // dispatch={props.dispatch} />
-          store={props.store} />
-        }
-        />
+
+        <Route path='/profile' render={() => <Profile /> }/>
+
+        <Route path='/dialogs' render={() => <DialogsContainer/> }/>
+
         <Route path='/music' component={Music} />
         <Route path='/news' component={News} />
         <Route path='/settings' component={Settings} />
@@ -34,7 +30,6 @@ function App(props) {
         />
       </div>
     </div>
-
   );
 }
 

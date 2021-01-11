@@ -3,7 +3,7 @@ import React from 'react';
 import Post from '../post/Post';
 
 const Posts = (props) => {
-    let postsElements = props.posts.map(p => <Post text={p.text}
+    let postsElements = props.profilePage.posts.map(p => <Post text={p.text}
         avatar={p.avatar} id={p.id} />);
         
     let newPostElement = React.createRef();
