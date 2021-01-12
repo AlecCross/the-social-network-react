@@ -5,19 +5,19 @@ import s from './Dialogs.module.css';
 import Message from './message/Message';
 
 const Dialogs = (props) => {
-debugger
-    let dialogs = props.messagesPage.dialogs.map(d => <Dialog name={d.name} id={d.id} />);
-    let messages = props.messagesPage.messages.map(m => <Message message={m.message} id={m.id} />);
+    let dialogs = props.messagesPage.dialogs.map(d => <Dialog name={d.name} id={d.id} key={d.id}/>);
+    let messages = props.messagesPage.messages.map(m => <Message message={m.message} id={m.id} key={m.id}/>);
     let newMessageBody = props.messagesPage.newMessageBody;
-    
+    debugger
     let SendMessageClick = () => {
         if (newMessageBody.length !== 0) {
             props.sendMessage();
         }
     }
     
-    let NewMessageChange = () => {
-       props.updateNewMessageBody();
+    let NewMessageChange = (event) => {
+        let body = event.target.value;
+       props.updateNewMessageBody(body);
     }
     let onSendMessageKeyDown = (event) => {
         if (event.target.value.length !== 0) {
