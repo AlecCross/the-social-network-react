@@ -1,6 +1,6 @@
 // import axios from 'axios';
 import * as axios from 'axios';
-import React from 'react';
+import React, {useState} from 'react';
 import userPhoto from '..//..//assets/images/avatar.svg';
 // import Friend from './friend/Friend';
 // import s from './Friends.module.css';
@@ -18,17 +18,20 @@ const Friends = (props) => {
     //         </div>
     //     </div>
     // )
+    const [currentPage, updatePage] = useState(1);
 
     let getUsers = () => {
-        if (props.users.length === 0) {
-            axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
+        // if (props.users.length === 0) {
+            axios.get(`https://social-network.samuraijs.com/api/1.0/users?count=5&page=${currentPage}`).then(response => {
             props.actions.setUsers(response.data.items)
             });
-        }
+            updatePage(currentPage+1);
+            
+        // }
     }
 
     return <div>
-        <button onClick={getUsers}>LoadUsers</button>{
+        {
             props.users.map(u => <div key={u.id}>
                 <span>
                     <div>
@@ -51,6 +54,8 @@ const Friends = (props) => {
                 </span>
             </div>)
         }
+        {/* <button onClick={getUsers}>LoadUsers</button> */}
+        <button onClick={getUsers}>ShowMore</button>
     </div>
 }
 
