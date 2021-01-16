@@ -1,5 +1,3 @@
-//import s from './Posts.module.css';
-import React from 'react';
 import {
     addPostActionCreator,
     updateNewPostTextActionCreator

@@ -7,14 +7,13 @@ import { Route } from 'react-router-dom';
 import Music from './components/music/Music';
 import News from './components/news/News';
 import Settings from './components/settings/Settings';
-import Friends from './components/friends/Friends';
+import FriendsContainer from './components/friends/FriendsContainer';
 
 function App(props) {
   return (
     <div className="app-wrapper">
       <Header />
-      <Navbar friends={props.state.friendsPage.friends} />
-      {/* <Navbar friends={props.state.friendsPage.friends} /> */}
+      <Navbar users={props.state.usersPage.users} /> 
       <div className='app-wrapper-content'>
 
         <Route path='/profile' render={() => <Profile /> }/>
@@ -24,10 +23,7 @@ function App(props) {
         <Route path='/music' component={Music} />
         <Route path='/news' component={News} />
         <Route path='/settings' component={Settings} />
-        <Route path='/friends' render={() => <Friends
-          friends={props.state.friendsPage.friends} />
-        }
-        />
+        <Route path='/friends' render={() => <FriendsContainer/> } />
       </div>
     </div>
   );

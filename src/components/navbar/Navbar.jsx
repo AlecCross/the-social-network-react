@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import s from './Navbar.module.css';
-import FriendsPreview from '../friends/friendPreview/FriendPreview';
+// import FriendsPreview from '../friends/friendPreview/FriendPreview';
 
 let Navbar = (props) => {
     return (
@@ -14,7 +14,7 @@ let Navbar = (props) => {
             <div 
                 className={s.item}><NavLink to="/friends"  activeClassName={s.active}>Friends</NavLink>
                 <div>
-                    <FriendsPreview friends={props.friends}/>
+                    {/* <FriendsPreview users={props.users}/> */}
                 </div>
             </div>
         </nav>
