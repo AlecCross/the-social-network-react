@@ -1,6 +1,8 @@
 let FOLLOW = 'FOLLOW';
 let UNFOLLOW = 'UNFOLLOW';
 let SET_USERS = 'SET_USERS';
+let SET_CURRENT_PAGE = 'SET_CURRENT_PAGE';
+let SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT';
 
 // let initialState = {
 //     users: [
@@ -15,13 +17,16 @@ let SET_USERS = 'SET_USERS';
 // }
 
 let initialState = {
-    users: []
+    users: [],
+    pagesSize: 100,
+    totalUsersCount: 0,
+    currentPage: 1,
 }
 
 const usersReducer = (state = initialState, action) => {
  
     switch (action.type) {
-        case 'FOLLOW':
+        case FOLLOW:
             return {
                 ...state,
                 users: state.users.map(u => {
@@ -31,7 +36,7 @@ const usersReducer = (state = initialState, action) => {
                     return u;
                 })
             }
-        case 'UNFOLLOW':
+        case UNFOLLOW:
             return {
                 ...state,
                 users: state.users.map(u => {
@@ -41,10 +46,18 @@ const usersReducer = (state = initialState, action) => {
                     return u;
                 })
             }
-        case 'SET_USERS':
+        case SET_USERS:
             return {
                 ...state,
-                users: [...state.users,  ...action.users]
+                users: [...action.users]
+            }
+        case SET_CURRENT_PAGE:
+            return {
+                ...state, currentPage: action.currentPage
+            }
+        case SET_TOTAL_USERS_COUNT:
+            return {
+                ...state, totalUsersCount: action.count
             }
         default:
             return state;
@@ -53,5 +66,7 @@ const usersReducer = (state = initialState, action) => {
 export const followUserAC = (userID) => ({ type: FOLLOW, userID })
 export const unfollowUserAC = (userID) => ({ type: UNFOLLOW, userID })
 export const setUsersAC = (users) => ({ type: SET_USERS, users })
+export const setCurrentPage = (currentPage) => ({ type: SET_CURRENT_PAGE, currentPage: currentPage})
+export const setTotalUsersCount = (totalUsersCount) => ({ type: SET_TOTAL_USERS_COUNT, count: totalUsersCount})
 
 export default usersReducer
