@@ -56,7 +56,7 @@ const Friends = (props) => {
         }
         {/* <button onClick={getUsers}>LoadUsers</button> */}
         <button onClick={getUsers}>ShowMore</button>
-    </div>
+    </div>  
 }
 
 export default Friends

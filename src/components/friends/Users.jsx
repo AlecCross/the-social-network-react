@@ -3,9 +3,13 @@ import React from 'react';
 import userPhoto from '..//..//assets/images/avatar.svg';
 
 class Users extends React.Component {
-    constructor(props) {
-        super(props);
-alert("создался объект пользователей");
+//     constructor(props) {
+//         super(props);
+// alert("создался объект пользователей");
+        
+//     }
+
+    componentDidMount(){
         axios.get(`https://social-network.samuraijs.com/api/1.0/users`)
             .then(response => {
                 this.props.actions.setUsers(response.data.items)
