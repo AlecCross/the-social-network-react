@@ -4,7 +4,9 @@ import {
     setUsersAC
 } from '../../redux/reducers/users-reducer';
 import { connect } from 'react-redux';
-import Friends from './Friends';
+// import Friends from './Friends';
+import Users from './Users';
+
 
 let mapStateToProps = (state) => ({ users: state.usersPage.users });
 let mapDispatchToProps = (dispatch) => ( {actions:{
@@ -13,5 +15,5 @@ let mapDispatchToProps = (dispatch) => ( {actions:{
     setUsers:       (users) => {dispatch(setUsersAC(users))}
 }})
     
-const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(Friends);
+const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(Users);
 export default FriendsContainer
