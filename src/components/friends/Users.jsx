@@ -14,10 +14,15 @@ const Users = (props) => {
         <div>
             <div>
                 {pages.map(p => {
-                
+                    alert(`${props.totalUsersCount}`);
+                    debugger
+                    this.props.setTotalUsersCount = 20;
+                    debugger
+                    alert(`${props.totalUsersCount}`);
                     return (
                         <span className={props.currentPage === p && styles.selectPage}
                             onClick={() => { props.onPageChanged(p); 
+                                debugger;
                         }}>{p}</span>
                     )
                 })}

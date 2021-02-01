@@ -11,7 +11,6 @@ import { connect } from 'react-redux';
 import Users from './Users';
 import * as axios from 'axios';
 
-
 class UsersContainer extends React.Component {
     componentDidMount() {
 
@@ -24,10 +23,10 @@ class UsersContainer extends React.Component {
 
     onPageChanged(pageNumber) {
         debugger
-
-        this.props.setCurrentPage(pageNumber);
-        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pagesSize}`)
-            .then(response => {
+        let pageNumber1 = pageNumber;
+        this.props.setCurrentPage(pageNumber1);
+        axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
+        .then(response => {
                 this.props.setUsers(response.data.items);
             });
     }
@@ -61,5 +60,5 @@ let mapDispatchToProps = (dispatch) => ({
     setTotalUsersCount: (totalUsersCount) => { dispatch(setTotalUsersCount(totalUsersCount)) }
 })
 
-const FriendsContainer = connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
-export default FriendsContainer
+export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+// export default FriendsContainer
