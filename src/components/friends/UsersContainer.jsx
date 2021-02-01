@@ -1,10 +1,10 @@
 import React from 'react';
 import {
-    followUserAC,
-    unfollowUserAC,
-    setUsersAC,
-    setCurrentPageAC,
-    setTotalUsersCountAC
+    followUser,
+    unfollowUser,
+    setUsers,
+    setCurrentPage,
+    setTotalUsersCount
 } from '../../redux/reducers/users-reducer';
 import { connect } from 'react-redux';
 // import Friends from './Friends';
@@ -52,10 +52,10 @@ let mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-    followUser: followUserAC,
-    unfollowUser: unfollowUserAC,
-    setUsers: setUsersAC,
-    setCurrentPage: setCurrentPageAC,
-    setTotalUsersCount: setTotalUsersCountAC
+    followUser,
+    unfollowUser,
+    setUsers,
+    setCurrentPage,
+    setTotalUsersCount
 })(UsersContainer);
 
