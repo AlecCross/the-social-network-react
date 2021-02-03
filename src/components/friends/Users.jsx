@@ -1,4 +1,5 @@
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 import userPhoto from '..//..//assets/images/avatar.svg';
 import styles from './Friends.module.css';
 
@@ -21,9 +22,10 @@ const Users = (props) => {
                     // alert(`${props.totalUsersCount}`);
                     return (
                         <span className={props.currentPage === p && styles.selectPage}
-                            onClick={() => { props.onPageChanged(p); 
+                            onClick={() => {
+                                props.onPageChanged(p);
                                 debugger;
-                        }}>{p}</span>
+                            }}>{p}</span>
                     )
                 })}
             </div>
@@ -31,11 +33,13 @@ const Users = (props) => {
                 props.users.map(u => <div key={u.id}>
                     <span>
                         <div>
-                            <img className={styles.userPhoto} src={
-                                u.uniqueUrlName === null
-                                    ? userPhoto
-                                    : u.uniqueUrlName
-                            } alt={u.name} />
+                            <NavLink to = { '/profile/' + u.id }>
+                                <img className={styles.userPhoto} src={
+                                    u.uniqueUrlName === null
+                                        ? userPhoto
+                                        : u.uniqueUrlName
+                                } alt={u.name} />
+                            </NavLink>
                         </div>
                         <div>
                             {u.isFollowed

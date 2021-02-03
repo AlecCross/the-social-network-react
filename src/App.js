@@ -1,7 +1,7 @@
 import './App.css'; //Импорт css 
 import Header from './components/header/Header';
 import Navbar from './components/navbar/Navbar';
-import Profile from './components/profile/Profile';
+import ProfileContainer from './components/profile/ProfileContainer';
 import DialogsContainer from './components/dialogs/DialogsContainer';
 import { Route } from 'react-router-dom';
 import Music from './components/music/Music';
@@ -16,7 +16,7 @@ function App(props) {
       <Navbar users={props.state.usersPage.users} /> 
       <div className='app-wrapper-content'>
 
-        <Route path='/profile' render={() => <Profile /> }/>
+        <Route path='/profile' render={() => <ProfileContainer /> }/>
 
         <Route path='/dialogs' render={() => <DialogsContainer/> }/>
 

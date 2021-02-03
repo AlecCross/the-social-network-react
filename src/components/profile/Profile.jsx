@@ -1,15 +1,15 @@
-import React from 'react';
-import PostContainer from './posts/PostContainer';
-import ProfileData from './profileData/ProfileData'
-//import s from './Profile.module.css';
+import React from 'react'
+import PostContainer from './posts/PostContainer'
+import ProfileInfo from './profileInfo/ProfileInfo'
+//import s from './Profile.module.css'
 
 let Profile = (props) => {
     return (
         <div>
-            <ProfileData />
+            <ProfileInfo profile={props.profile}/>
             <PostContainer store={props.store} />
         </div>
-    );
+    )
 }
 
 export default Profile

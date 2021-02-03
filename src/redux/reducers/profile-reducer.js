@@ -1,5 +1,6 @@
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT';
 const ADD_POST = 'ADD-POST';
+const SET_USER_PROFILE = 'SET_USER_PROFILE';
 let stockAvatar =
     'https://lumpics.ru/wp-content/uploads/2017/11/Programmyi-dlya-sozdaniya-avatarok.png';
 
@@ -11,6 +12,7 @@ let initialState = {
         { id: 4, text: 'Пост4', avatar: stockAvatar },
     ],
     newPostText: '',
+    profile: null //профиля пока нет он еще не проинициал
 };
 
 const profileReducer = ( state = initialState, action) => {
@@ -31,6 +33,10 @@ const profileReducer = ( state = initialState, action) => {
                 posts: [newPost, ...state.posts],
                 newPostText: ''
             }
+        case SET_USER_PROFILE:
+            return{
+                ...state, profile: action.profile
+            }
         default:
             return state;
     }
@@ -42,4 +48,5 @@ export const updateNewPostTextActionCreator = (text) => {
     }
 }
 export const addPostActionCreator = () => ({ type: ADD_POST })
+export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile })
 export default profileReducer
