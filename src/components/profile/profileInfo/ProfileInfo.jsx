@@ -2,7 +2,7 @@ import React from 'react';
 import Preloader from '../../common/preloader/Preloader';
 import s from './ProfileInfo.module.css';
 
-const ProfileData = (props) => {
+const ProfileInfo = (props) => {
     if (!props.profile) {
         return <Preloader />
 
@@ -24,4 +24,4 @@ const ProfileData = (props) => {
     )
 }
 
-export default ProfileData
+export default ProfileInfo
